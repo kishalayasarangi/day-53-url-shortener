@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="app-title">🔗 URL Shortener</h1>
+    <p class="subtitle">Full Stack · Flask + SQLite · Day 53 of 120</p>
+
+    <!-- SHORTEN FORM -->
+    <div class="form-card">
+      <h3>Shorten a URL</h3>
+      <div class="url-input-wrap">
+        <input type="text" id="urlInput"
+               placeholder="https://your-long-url.com/very/long/path..."/>
+      </div>
+      <div class="custom-row">
+        <span class="base-url">localhost:5000/</span>
+        <input type="text" id="customCode"
+               placeholder="custom-code (optional)"
+               maxlength="20"/>
+      </div>
+      <button class="btn-shorten" onclick="shortenUrl()">
+        ✨ Shorten URL
+      </button>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-card hidden" id="resultCard">
+      <div class="result-top">
+        <div class="result-info">
+          <div class="result-label">Short URL</div>
+          <div class="result-short" id="resultShort"></div>
+          <div class="result-original" id="resultOriginal"></div>
+        </div>
+        <img class="qr-code" id="qrCode" src="" alt="QR Code"/>
+      </div>
+      <div class="result-actions">
+        <button class="btn-copy" onclick="copyShortUrl()">
+          📋 Copy URL
+        </button>
+        <button class="btn-copy" onclick="downloadQR()">
+          ⬇️ Download QR
+        </button>
+        <button class="btn-visit" id="visitBtn">
+          🔗 Visit →
+        </button>
+      </div>
+      <div class="result-meta" id="resultMeta"></div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <span id="totalUrls">0</span>
+        <label>URLs Shortened</label>
+      </div>
+      <div class="stat-card">
+        <span id="totalClicks">0</span>
+        <label>Total Clicks</label>
+      </div>
+      <div class="stat-card">
+        <span id="topClicks">0</span>
+        <label>Most Clicked</label>
+      </div>
+    </div>
+
+    <!-- URL TABLE -->
+    <div class="table-card">
+      <div class="table-header">
+        <h3>All Shortened URLs</h3>
+        <button onclick="loadUrls()">↺ Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table id="urlTable">
+          <thead>
+            <tr>
+              <th>Short Code</th>
+              <th>Original URL</th>
+              <th>Clicks</th>
+              <th>Created</th>
+              <th>Last Click</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="urlTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Day 53 of 120 · Kishalaya Sarangi · NIT Rourkela</footer>
+  <script src="/static/script.js"></script>
+</body>
+</html>
